@@ -48,6 +48,8 @@ class Vacationer extends Thread { // Class for the auto threads.
 			
 			//Count fish caught
 			int fish = (int)(Math.random()*10.99);
+			vacation.fishBucket+=fish;
+			System.out.println(threadName+" caught "+fish+" fish");
 			
 			//Wait to release rod
 			try {

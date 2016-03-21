@@ -5,7 +5,9 @@ import java.util.concurrent.Semaphore;
 class Vacation extends Thread // The ferry Class
 {
 	final static int MINUTE = 50; // ms per minute in simulation
-	int minutes;
+	public int fishBucket = 0; //total fish caught by users
+	int minutes; //total number of minutes to run simulation
+	
 	// Semaphores
 	Semaphore rodSemaphore;
 	Semaphore baitSemaphore;
@@ -27,5 +29,7 @@ class Vacation extends Thread // The ferry Class
 			} catch (Exception e) {
 			}
 		}
+		System.out.println("Total fish caught: "+fishBucket);
+		System.out.println("Vacationer average catch: "+fishBucket/10);
 	}
 }
