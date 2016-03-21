@@ -7,10 +7,12 @@ class Vacationer extends Thread { // Class for the auto threads.
 	final static int MINUTE = 50; // ms per minute in simulation
 	private String threadName;
 	private Vacation vacation;
+	private int rodWaitTime = 1;
 
-	public Vacationer(String threadName,Vacation vacation) {
+	public Vacationer(String threadName,Vacation vacation,int rodWaitTime) {
 		this.threadName = threadName;
 		this.vacation = vacation;
+		this.rodWaitTime = rodWaitTime;
 	}
 
 	public void run() {
@@ -49,11 +51,11 @@ class Vacationer extends Thread { // Class for the auto threads.
 			//Count fish caught
 			int fish = (int)(Math.random()*10.99);
 			vacation.fishBucket+=fish;
-			System.out.println(threadName+" caught "+fish+" fish");
+			//System.out.println(threadName+" caught "+fish+" fish");
 			
 			//Wait to release rod
 			try {
-				sleep(1*MINUTE);
+				sleep(rodWaitTime*MINUTE);
 			} catch (Exception e) {
 				break;
 			}
@@ -65,7 +67,7 @@ class Vacationer extends Thread { // Class for the auto threads.
 			if (isInterrupted())
 				break;
 		}
-		System.out.println(threadName + " terminated");
+		//System.out.println(threadName + " terminated");
 	}
 
 }
